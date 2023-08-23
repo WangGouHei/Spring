@@ -201,7 +201,7 @@ public class Spring: NSObject {
                 animation.toValue = 0
                 animation.timingFunction = getTimingFunction(curve: curve)
                 animation.duration = CFTimeInterval(duration)
-                animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                animation.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + CFTimeInterval(delay)
                 animation.autoreverses = true
                 layer.add(animation, forKey: "fade")
             case .FadeInLeft:
@@ -238,7 +238,7 @@ public class Spring: NSObject {
                 animation.duration = CFTimeInterval(duration)
                 animation.isAdditive = true
                 animation.repeatCount = repeatCount
-                animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                animation.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + CFTimeInterval(delay)
                 layer.add(animation, forKey: "shake")
             case .Pop:
                 let animation = CAKeyframeAnimation()
@@ -249,7 +249,7 @@ public class Spring: NSObject {
                 animation.duration = CFTimeInterval(duration)
                 animation.isAdditive = true
                 animation.repeatCount = repeatCount
-                animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                animation.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + CFTimeInterval(delay)
                 layer.add(animation, forKey: "pop")
             case .FlipX:
                 rotate = 0
@@ -265,7 +265,7 @@ public class Spring: NSObject {
                     CATransform3DConcat(perspective, CATransform3DMakeRotation(CGFloat(CGFloat.pi), 0, 1, 0)))
                 animation.duration = CFTimeInterval(duration)
                 animation.repeatCount = repeatCount
-                animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                animation.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + CFTimeInterval(delay)
                 animation.timingFunction = getTimingFunction(curve: curve)
                 layer.add(animation, forKey: "3d")
             case .FlipY:
@@ -280,7 +280,7 @@ public class Spring: NSObject {
                     CATransform3DConcat(perspective, CATransform3DMakeRotation(CGFloat(CGFloat.pi), 1, 0, 0)))
                 animation.duration = CFTimeInterval(duration)
                 animation.repeatCount = repeatCount
-                animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                animation.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + CFTimeInterval(delay)
                 animation.timingFunction = getTimingFunction(curve: curve)
                 layer.add(animation, forKey: "3d")
             case .Morph:
@@ -331,7 +331,7 @@ public class Spring: NSObject {
                 animation.duration = CFTimeInterval(duration)
                 animation.repeatCount = repeatCount * 2.0
                 animation.autoreverses = true
-                animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                animation.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + CFTimeInterval(delay)
                 layer.add(animation, forKey: "flash")
             case .Wobble:
                 let animation = CAKeyframeAnimation()
@@ -340,7 +340,7 @@ public class Spring: NSObject {
                 animation.keyTimes = [0, 0.2, 0.4, 0.6, 0.8, 1]
                 animation.duration = CFTimeInterval(duration)
                 animation.isAdditive = true
-                animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                animation.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + CFTimeInterval(delay)
                 layer.add(animation, forKey: "wobble")
 
                 let x = CAKeyframeAnimation()
@@ -351,7 +351,7 @@ public class Spring: NSObject {
                 x.duration = CFTimeInterval(duration)
                 x.isAdditive = true
                 x.repeatCount = repeatCount
-                x.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                x.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + CFTimeInterval(delay)
                 layer.add(x, forKey: "x")
             case .Swing:
                 let animation = CAKeyframeAnimation()
@@ -361,7 +361,7 @@ public class Spring: NSObject {
                 animation.duration = CFTimeInterval(duration)
                 animation.isAdditive = true
                 animation.repeatCount = repeatCount
-                animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                animation.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + CFTimeInterval(delay)
                 layer.add(animation, forKey: "swing")
             }
         }
