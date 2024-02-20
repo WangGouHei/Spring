@@ -249,7 +249,7 @@ public class Spring: NSObject {
                 animation.duration = CFTimeInterval(duration)
                 animation.isAdditive = true
                 animation.repeatCount = repeatCount
-                animation.beginTime = CACurrentMediaTime() + CFTimeInterval(delay)
+                animation.beginTime = CFTimeInterval(delay)
                 layer.add(animation, forKey: "pop")
             case .FlipX:
                 rotate = 0
